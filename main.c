@@ -93,10 +93,10 @@ void main() {
 					restore();
 				} else if (chr == '\n' || chr == 's' || chr == ' ') {
 					// Save current time :D
-					printf("\n");
+					printf(" (saved) \n");
 				} else if (chr == '\t' || chr == 'r') {
 					// Save current time
-					printf("\n");
+					printf(" (restarted) \n");
 					// Reset initial time
 					gettimeofday(&stv, NULL);
 				}
