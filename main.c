@@ -12,6 +12,8 @@
 struct termios saved;
 
 void restore() {
+	printf(" (exit)");
+
 	// Show cursor
 	printf("\e[?25h\n");
 	
@@ -93,10 +95,10 @@ void main() {
 					restore();
 				} else if (chr == '\n' || chr == 's' || chr == ' ') {
 					// Save current time :D
-					printf(" (saved) \n");
+					printf(" (save) \n");
 				} else if (chr == '\t' || chr == 'r') {
 					// Save current time
-					printf(" (restarted) \n");
+					printf(" (reset) \n");
 					// Reset initial time
 					gettimeofday(&stv, NULL);
 				}
