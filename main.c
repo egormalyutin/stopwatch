@@ -27,7 +27,7 @@ void main() {
 	// Display help
 	printf("Press Enter, Space or S to save current time\n");
 	printf("Press Tab or R to save current time and reset timer\n");
-	printf("Press Ctrl+C or Q to exit\n");
+	printf("Press Ctrl+C or Q to save current time and exit\n");
 
 	// Restore when user hits ctrl+c
 	signal(SIGINT, restore);

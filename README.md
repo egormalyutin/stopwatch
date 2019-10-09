@@ -6,7 +6,7 @@ Simple stopwatch in terminal, written in C:
 > stopwatch
 Press Enter, Space or S to save current time
 Press Tab or R to save current time and reset timer
-Press Ctrl+C or Q to exit
+Press Ctrl+C or Q to save current time and exit
 00:00:01.087612 (save)
 00:00:19.885023 (save)
 00:00:22.715260 (save)
