@@ -9,6 +9,8 @@
 
 // I haven't even read K&R so please don't kill me
 
+#define TIMEOUT 60000
+
 struct termios saved;
 
 void restore() {
@@ -54,7 +56,7 @@ void main() {
 	// Select timeout
 	struct timeval timeout;
 	timeout.tv_sec = 0;
-	timeout.tv_usec = 0;
+	timeout.tv_usec = TIMEOUT;
 
 	// Initial time
 	struct timeval stv;
@@ -63,10 +65,6 @@ void main() {
 	// Current time
 	struct timeval tv;
 	struct tm *ptm;
-
-	// Sleep time
-	struct timespec ts;
-	ts.tv_sec = 0;
 
 	// Last pressed character
 	char chr = 1;
@@ -87,6 +85,7 @@ void main() {
 		// copied from https://stackoverflow.com/a/37271281
 		if (chr != EOF) {
 			int sel_rv = select(1, &readfds, NULL, NULL, &timeout);
+			timeout.tv_usec = TIMEOUT;
 			if (sel_rv > 0) {
 				chr = getchar();
 
@@ -109,9 +108,5 @@ void main() {
 
 			readfds = savefds;
 		}
-
-		// Sleep some milliseconds
-		ts.tv_nsec = 60 * 1000000;
-		nanosleep(&ts, &ts);
 	}
 }
